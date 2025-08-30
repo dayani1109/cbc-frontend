@@ -1,31 +1,31 @@
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import ProductCard from './components/productCard'
+import AdminPage from './pages/adminPage';
+import HomePage from './pages/homePage';
+import TestPage from './pages/test';
 
 function App() {
   
 
   return (
-    <>
-      <div className="h-[700px] w-[700px] relative border-[5px] flex justify-center items-center">
-        <button className="bg-green-900 absolute top-[0px] right-[0px]">xxx</button>
-          <div className="w-[300px] h-[200px] relative bg-blue-400 flex justify-center items-center">
-            <button className="bg-red-900 absolute top-[0px] right-[0px]">xxx</button>
-            
-            <button className="text-white bg-green-500 absolute bottom-[0px] right-[0px] p-[20px]">Chat with whatsapp</button>
+    <BrowserRouter>
+      <div className ="w-full h-[100vh]">
+        <Routes path = "/" > {/*install karagatta router-dom ekem ganne meka component ekak */}
 
-            <h1>Your time has over</h1>
-          </div>
+          {/*  me vage Route gdk dagann puluvam */}
+          <Route path = "/*" element ={<HomePage/>} /> 
+          <Route path = "/register" element ={<h1>Register Page </h1>}/>
+          <Route path = "/admin/*" element ={<AdminPage/>}/>
+          <Route path = "/test" element ={<TestPage/>}/>
 
-          <div className="w-[300px] h-[300px] bg-pink-800 p-[40px] m-[20px]">
-            <div className="w-[50px] h-[50px] bg-yellow-300 m-[10px]"></div>
 
-            <div className="w-[50px] h-[50px] bg-blue-500 m-[10px]"></div>
-
-          </div>
+        </Routes>
       </div>
-    </>
-  )
+
+    </BrowserRouter>
+    
+  );
 }
 
-export default App
+export default App;

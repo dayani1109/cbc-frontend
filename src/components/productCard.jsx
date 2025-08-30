@@ -1,5 +1,3 @@
-import "./productCard.css"
-
 export default function ProductCard(props){//function ek hadanne new html tag ekak introduce karann. ethkot aniwa first letter Capital
     
     

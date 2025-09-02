@@ -5,6 +5,7 @@ import { RiBox3Line } from "react-icons/ri";
 import { HiOutlineUsers } from "react-icons/hi";
 import AdminProductPage from "./admin/adminProductPage";
 import AddProductPage from "./admin/adminAddNewProduct";
+import UpdateProductPage from "./admin/adminUpdateProduct";
 
 export default function AdminPage(){
     return(
@@ -36,6 +37,8 @@ export default function AdminPage(){
                     Users
                 </Link>
 
+                
+
         
 
                 
@@ -48,6 +51,7 @@ export default function AdminPage(){
                         <Route path ="/products" element = {<AdminProductPage/>}/>
                         <Route path ="/orders" element = {<h1>Orders</h1>}/>
                         <Route path ="/add-product" element = {<AddProductPage/>}/>
+                        <Route path ="/update-product" element = {<UpdateProductPage/>}/>
                     </Routes>
 
                 </div>

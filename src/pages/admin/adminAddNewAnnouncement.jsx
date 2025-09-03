@@ -4,7 +4,7 @@ import mediaUpload from "../../utils/mediaUpload";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-export default function AddProductPage() {
+export default function AddAnnouncementPage() {
   const [productID, setProductID] = useState("");
   const [name, setName] = useState("");
   const [altNames, setAltNames] = useState("");
@@ -188,10 +188,11 @@ export default function AddProductPage() {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="Cream">Cream</option>
-              <option value="Loation">Loation</option>
-              <option value="Serum">Serum</option>
+              <option value="Cream">Skincare</option>
+              <option value="Loation">Haircare</option>
+              <option value="Serum">Fragrance & Body Care</option>
               <option value="Makeup">Makeup</option>
+              <option value="Makeup">Face Masks</option>
             </select>
           </div>
 

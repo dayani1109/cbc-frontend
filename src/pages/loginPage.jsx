@@ -6,69 +6,73 @@ import { useNavigate } from "react-router-dom";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   async function login() {
-    
-    try{
-
-        const response = await axios.post(
+    try {
+      const response = await axios.post(
         import.meta.env.VITE_API_URL + "/api/users/login",
-        { email : email ,password : password}
+        { email: email, password: password }
+      );
 
-        );
+      localStorage.setItem("token", response.data.token); //token ek save karanava localStorage eke
+      toast.success("Login Successful");
 
-        localStorage.setItem("token",response.data.token)//token ek save karanava localStorage eke
-        toast.success("Login Successful")
+      const user = response.data.user;
+      if (user.role == "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
+    } catch (e) {
+      console.error("Login failed :", e);
 
-        const user = response.data.user;
-            if (user.role == "admin"){
-               navigate("/admin");
-            }else{
-                 navigate("/");
-            }
-              
-    }catch(e){
-        console.error("Login failed :", e);
-       
-        toast.error("Login failed. Please check your credentials")
+      toast.error("Login failed. Please check your credentials");
     }
-    
   }
 
   return (
-    <div className="w-full h-screen flex bg-[url('/cosmatic.jpg')] bg-cover bg-center">
+    <div className="w-full h-screen flex bg-[url('classroom.png')] bg-cover bg-center">
       {/* Left Section */}
       <div className="hidden lg:flex w-1/2 h-full text-white flex-col justify-center items-start px-16 bg-black/30 backdrop-blur-[2px]">
-        <img src="/logo.png" alt="CBC Logo" className="w-35 h-35 mb-8 object-cover" />
+        <img
+          src="logor.png"
+          alt="ITGuru Logo"
+          className="w-35 h-35 mb-8 object-cover"
+        />
 
-<h1 className="text-5xl font-bold leading-tight">
-  <span className="text-primary">Glow in.</span>{" "}
-  <span className="text-primary">Log in.</span>
-</h1>
-
+        <h1 className="text-5xl font-bold leading-tight">
+          <span className="text-primary">ITGuru</span>{" "}
+          <span className="text-primary">E-Tutoring</span>
+        </h1>
 
         <p className="mt-6 text-lg text-gray-200 max-w-lg">
-          Welcome to your CBC dashboard – manage orders, track inventory,
-          and keep your beauty line sparkling. <br />
-          <span className="italic">Secure, fast, elegant.</span>
+          Join A/L classes with expert guidance from{" "}
+          <span className="font-semibold">Mr. Janaka Wickramage</span> and
+          enhance your IT skills. <br />
+          <span className="italic">Learn smart, fast, and effectively.</span>
         </p>
 
         <p className="mt-20 text-sm text-gray-300">
-          © 2025 CBC – Crystal Beauty Clear. All rights reserved.
+          © 2025 ITGuru – All rights reserved.
         </p>
       </div>
 
       {/* Right Section */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center p-6 h-[600px]">
-        <div className=" 
+      <div className="w-full lg:w-1/2 flex justify-center items-center p-6 h-[600px]  bg-black/30 backdrop-blur-[2px]">
+        <div
+          className=" 
                         backdrop-blur-md bg-black/10 border border-white/20 
                         shadow-2xl rounded-2xl p-8 flex flex-col gap-3 text-white
-                        transition-all hover:scale-[1.02] duration-300 w-[350px]">
-
+                        transition-all hover:scale-[1.02] duration-300 w-[350px]"
+        >
           {/* Logo */}
           <div className="flex justify-center mb-2">
-            <img src="/logo.png" alt="CBC Logo" className="w-20 h-20 object-cover" />
+            <img
+              src="logor.png"
+              alt="ITGuru Logo"
+              className="w-20 h-20 object-cover"
+            />
           </div>
 
           {/* Heading */}
@@ -76,7 +80,7 @@ export default function LoginPage() {
             <span className="text-accent">Welcome back</span>
           </h2>
           <p className="text-sm text-white text-center -mt-3">
-            Sign in to continue to your CBC workspace
+            Sign in to access your ITGuru classes
           </p>
 
           {/* Email Input */}
@@ -84,8 +88,8 @@ export default function LoginPage() {
             <label className="text-sm text-white">Email address</label>
             <input
               type="email"
-              placeholder="e.g : you@cbc.com"
-              value={email}    
+              placeholder="e.g : student@itguru.com"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full h-12 px-4 mt-1 rounded-xl 
                          bg-white/30 border border-boardercolor text-white
@@ -99,7 +103,7 @@ export default function LoginPage() {
             <input
               type="password"
               placeholder="Enter Your Password"
-              value={password}    
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full h-12 px-4 mt-1 rounded-xl 
                          bg-white/30 border border-boardercolor text-white
@@ -109,7 +113,6 @@ export default function LoginPage() {
 
           {/* Remember Me + Forgot */}
           <div className="flex justify-end items-center text-sm text-white">
-        
             <a href="#" className="text-accent hover:underline">
               Forgot password?
             </a>
@@ -131,8 +134,6 @@ export default function LoginPage() {
               Sign up
             </a>
           </p>
-
-          
         </div>
       </div>
     </div>

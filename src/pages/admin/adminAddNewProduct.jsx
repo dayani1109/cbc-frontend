@@ -4,7 +4,7 @@ import mediaUpload from "../../utils/mediaUpload";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-export default function AddAnnouncementPage() {
+export default function AddProductPage() {
   const [productID, setProductID] = useState("");
   const [name, setName] = useState("");
   const [altNames, setAltNames] = useState("");

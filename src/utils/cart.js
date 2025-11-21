@@ -62,3 +62,16 @@ export function addToCart(product, quantity){ //quantity ek + or - venn puluvam
 
     localStorage.setItem("cart",JSON.stringify(cart))//JSON.stringify - use this convert string
 }
+//cart eke total ek gannn function ek
+
+export function getTotal(){
+    const cart = loadCart()
+    let total = 0
+
+    cart.forEach(//cart eke thiyena hema item ekatm meka run karanna
+        (item)=>{
+            total += item.price * item.quantity
+        }
+    )
+    return total// final total ek return karanva
+}

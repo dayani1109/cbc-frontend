@@ -1,3 +1,4 @@
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -15,6 +16,9 @@ export default function Header() {
           <Link to="/about">About Us</Link>
           <Link to="/contact">Contact</Link>
         </div>
+        <Link to ="/cart" className="h-full absolute right-0 flex justify-center items-center text-3xl mr-10">
+        <MdOutlineShoppingCart />
+        </Link>
       </div>
     </header>
   );

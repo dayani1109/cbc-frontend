@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Loder } from "../components/loder";
 import ImageSlider from "../components/imageSlider";
+import { addToCart, loadCart } from "../utils/cart";
 
 export default function ProductOverview() {
   const params = useParams();
@@ -97,18 +98,28 @@ return (
               className="w-1/2 h-[50px] rounded-xl bg-accent text-white font-semibold shadow-lg 
               hover:bg-accent/90 hover:shadow-[0_10px_25px_rgba(154,63,63,0.45)] 
               transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
-            >
+            onClick={()=>{
+              addToCart(product,1)
+              toast.success("Added to Cart")
+            }}>
               Add to Cart
             </button>
 
             {/* BUY */}
-            <button
-              className="w-1/2 h-[50px] rounded-xl border-2 border-accent text-accent font-semibold shadow-md 
+            <Link to = "/checkout" state={[{
+              image: product.images[0],
+              productID: product.productID,
+              name: product.name,
+              price: product.price,
+              labelledPrice: product.labelledPrice,
+              quantity: 1
+            }]}
+              className="w-1/2 h-[50px] rounded-xl border-2 border-accent text-accent flex justify-center items-center text-center font-semibold shadow-md 
               hover:bg-accent hover:text-white hover:shadow-[0_10px_25px_rgba(154,63,63,0.35)]
               transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
             >
               Buy Now
-            </button>
+            </Link>
 
           </div>
         </div>

@@ -81,42 +81,52 @@ export default function CheckoutPage() {
     }
   }
 
-  return (
-    <div className="w-full min-h-[calc(100vh-100px)] bg-primary flex flex-col pt-[30px] items-center">
-      <div className="w-full max-w-[650px] flex flex-col gap-5 px-4">
-        {cart.map((item, index) => {
-          return (
-            <div
-              key={index}
-              className="w-full h-[140px] bg-white rounded-xl shadow-md hover:shadow-lg 
-              transition-all flex items-center p-4 relative"
-            >
-              <button
-                className="absolute -right-12 top-4 text-red-500 bg-red-100 hover:bg-red-500 hover:text-white
-                  transition-all rounded-full p-2 shadow"
-                onClick={() => {
-                  // delete logic should go here (logic untouched)
-                }}
-              >
-                <FaRegTrashCan size={18} />
-              </button>
+return (
+  <div className="w-full min-h-[calc(100vh-100px)] bg-primary flex flex-col pt-[30px] items-center">
+    <div className="w-full max-w-[650px] flex flex-col gap-5 px-4">
 
+      {cart.map((item, index) => {
+        return (
+          <div
+            key={index}
+            className="
+              w-full bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-4 relative
+              flex flex-col lg:grid lg:grid-cols-2 lg:gap-4 lg:h-auto
+            "
+          >
+            <button
+              className="absolute right-5 lg:-right-12 top-4 text-red-500 bg-red-100 hover:bg-red-500 hover:text-white
+                transition-all rounded-full p-2 shadow "
+              onClick={() => {
+                // delete logic should go here (logic untouched)
+              }}
+            >
+              <FaRegTrashCan size={18}/>
+            </button>
+
+            {/* LEFT SIDE — IMAGE + NAME */}
+            <div className="flex h-full gap-4">
               <img
-                className="h-full aspect-square object-cover rounded-lg shadow-sm"
+                className="h-[140px] w-[140px] object-cover rounded-lg shadow-sm"
                 src={item.image}
               />
 
-              <div className="w-[200px] h-full flex flex-col pl-[10px] pt-[10px]">
+              <div className="flex flex-col justify-center">
                 <h1 className="font-semibold text-lg w-full text-wrap text-secondary leading-tight">
                   {item.name}
                 </h1>
+
                 {/*productID */}
                 <span className="text-sm text-secondary opacity-60">
                   {item.productID}
                 </span>
               </div>
+            </div>
 
-              <div className="w-[90px] h-full flex flex-col justify-center items-center">
+            {/* RIGHT SIDE — QTY + PRICE */}
+            <div className="flex justify-between lg:justify-end items-center gap-6 mt-3 lg:mt-0">
+
+              <div className="flex flex-col justify-center items-center">
                 <FaSortUp
                   className="text-3xl cursor-pointer text-secondary hover:text-accent transition"
                   onClick={() => {
@@ -144,43 +154,48 @@ export default function CheckoutPage() {
                 />
               </div>
 
-              <div className="w-[150px]  h-full flex flex-col items-end">
+              <div className="flex flex-col items-end gap-2">
                 {item.labelledPrice > item.price && (
                   <span
                     className="text-secondary w-full text-right pr-[10px] line-through 
-                        text-lg opacity-60 mt-[20px]"
+                      text-lg opacity-60"
                   >
                     LKR {item.labelledPrice.toFixed(2)}
                   </span>
                 )}
+
                 <span
                   className="text-accent font-bold w-full text-right pr-[10px]  
-                    text-2xl mt-[5px]"
+                    text-xl"
                 >
                   LKR {item.price.toFixed(2)}
                 </span>
               </div>
+
             </div>
-          );
-        })}
-
-        <div className="w-full h-[130px] bg-white rounded-xl shadow-md flex justify-between items-center px-6">
-          <button
-            to="/checkout"
-            onClick={purchaseCart}
-            className="bg-accent text-white px-6 py-3 rounded-lg shadow hover:bg-accent/90 
-            transition font-semibold hover:scale-[1.02] active:scale-95"
-          >
-            Order
-          </button>
-
-          <div className="h-[50px] flex items-center">
-            <span className="font-bold text-accent w-full text-right text-2xl mt-[5px]">
-              Total: LKR {getTotal().toFixed(2)}
-            </span>
           </div>
+        );
+      })}
+
+      {/* Bottom Total Section */}
+      <div className="w-full h-[130px] bg-white rounded-xl shadow-md flex justify-between items-center px-6">
+        <button
+          to="/checkout"
+          onClick={purchaseCart}
+          className="bg-accent text-white px-6 py-3 rounded-lg shadow hover:bg-accent/90 
+          transition font-semibold hover:scale-[1.02] active:scale-95"
+        >
+          Order
+        </button>
+
+        <div className="h-[50px] flex items-center">
+          <span className="font-bold text-accent w-full text-right text-xl lg:text-2xl mt-[5px]">
+            Total: LKR {getTotal().toFixed(2)}
+          </span>
         </div>
       </div>
+
     </div>
-  );
+  </div>
+);
 }

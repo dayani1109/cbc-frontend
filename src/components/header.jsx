@@ -21,15 +21,22 @@ export default function Header() {
         </div>
 
         {isSideBarOpen && (
-          <div className="fixed top-0 left-0 w-full h-screen bg-[#00000080] z-[50] ">
-            <div className="w-[300px] bg-primary h-full">
-              <div className="lg:hidden h-[100px] w-full flex justify-center items-center relative bg-accent ">
+          <div className="fixed top-0 left-0 w-full h-screen bg-[#00000080] z-[100] text-accent">
+            <div className="w-[300px] bg-primary h-full flex flex-col">
+              <div className="lg:hidden h-[100px] w-full flex justify-center items-center relative bg-accent  ">
                 <MdMenu
-                  className="absolute left-2 text-3xl"
-                  onClick={() => setIsSideBarOpen(true)}
+                  className="absolute left-2 text-3xl text-white"
+                  onClick={() => setIsSideBarOpen(false)}
                 />
                 <img src="logo.png" className="h-full w-[110px] object-cover" />
+              
               </div>
+              <a href="/" className="p-4 border-b border-secondary/10 font-bold "> Home </a>
+              <a href="/products" className="p-4 border-b border-secondary/10 font-bold"> Products </a>
+              <a href="/order" className="p-4 border-b border-secondary/10 font-bold"> Order </a>
+              <a href="/about" className="p-4 border-b border-secondary/10 font-bold"> About Us </a>
+              <a href="/contact" className="p-4 border-b border-secondary/10 font-bold"> Contact </a>
+              <a href="/cart" className="p-4 border-b border-secondary/10 font-bold"> Cart </a>
             </div>
           </div>
         )}

@@ -8,6 +8,8 @@ import axios from "axios";
 export default function CheckoutPage() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [address, setAddress] = useState("");
+  const [name, setName] = useState("");
 
   const [cart, setCart] = useState(location.state); //cart ek load venva patangaddi cart ekt value enne mekem
 
@@ -47,7 +49,8 @@ export default function CheckoutPage() {
       await axios.post(
         import.meta.env.VITE_API_URL + "/api/orders",
         {
-          address: "No 123, Main Street, Matara", //address ek vitarayi yavanne anthi eva usergem gannva
+          address: address, //address ekayi name ekayi vitarayi yavanne anthi eva usergem gannva
+          customerName: name == "" ? null :name ,//name ek hisnm null kiyala yavann nathnm name ek yavann
           items: items, //uda items array ekath yavanva
         },
         {
@@ -81,121 +84,156 @@ export default function CheckoutPage() {
     }
   }
 
-return (
-  <div className="w-full min-h-[calc(100vh-100px)] bg-primary flex flex-col pt-[30px] items-center">
-    <div className="w-full max-w-[650px] flex flex-col gap-5 px-4">
-
-      {cart.map((item, index) => {
-        return (
-          <div
-            key={index}
-            className="
+  return (
+    <div className="w-full min-h-[calc(100vh-100px)] bg-primary flex flex-col pt-[30px] items-center">
+      <div className="w-full max-w-[650px] flex flex-col gap-5 px-4">
+        {cart.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="
               w-full bg-white rounded-xl shadow-md hover:shadow-lg transition-all p-4 relative
               flex flex-col lg:grid lg:grid-cols-2 lg:gap-4 lg:h-auto
             "
-          >
-            <button
-              className="absolute right-5 lg:-right-12 top-4 text-red-500 bg-red-100 hover:bg-red-500 hover:text-white
-                transition-all rounded-full p-2 shadow "
-              onClick={() => {
-                // delete logic should go here (logic untouched)
-              }}
             >
-              <FaRegTrashCan size={18}/>
-            </button>
+              <button
+                className="absolute right-5 lg:-right-12 top-4 text-red-500 bg-red-100 hover:bg-red-500 hover:text-white
+                transition-all rounded-full p-2 shadow "
+                onClick={() => {
+                  // delete logic should go here (logic untouched)
+                }}
+              >
+                <FaRegTrashCan size={18} />
+              </button>
 
-            {/* LEFT SIDE — IMAGE + NAME */}
-            <div className="flex h-full gap-4">
-              <img
-                className="h-[140px] w-[140px] object-cover rounded-lg shadow-sm"
-                src={item.image}
-              />
-
-              <div className="flex flex-col justify-center">
-                <h1 className="font-semibold text-lg w-full text-wrap text-secondary leading-tight">
-                  {item.name}
-                </h1>
-
-                {/*productID */}
-                <span className="text-sm text-secondary opacity-60">
-                  {item.productID}
-                </span>
-              </div>
-            </div>
-
-            {/* RIGHT SIDE — QTY + PRICE */}
-            <div className="flex justify-between lg:justify-end items-center gap-6 mt-3 lg:mt-0">
-
-              <div className="flex flex-col justify-center items-center">
-                <FaSortUp
-                  className="text-3xl cursor-pointer text-secondary hover:text-accent transition"
-                  onClick={() => {
-                    const newCart = [...cart]; //cart ekem copyyak hadala e variable ek newCart kiyala ekkt dagaththa
-
-                    newCart[index].quantity += 1; //newCart eke adala index eka aragen e index ekt adala eke quantity ek 1kin wedi kala
-                    setCart(newCart); //newCart ek set kara gannva
-                  }}
+              {/* LEFT SIDE — IMAGE + NAME */}
+              <div className="flex h-full gap-4">
+                <img
+                  className="h-[140px] w-[140px] object-cover rounded-lg shadow-sm"
+                  src={item.image}
                 />
-                <span className="font-bold text-2xl text-secondary">
-                  {item.quantity}
-                </span>
-                <FaCaretDown
-                  className="text-3xl cursor-pointer text-secondary hover:text-accent transition"
-                  onClick={() => {
-                    const newCart = [...cart]; //cart ekem copyyak hadala e variable ek newCart kiyala ekkt dagaththa
 
-                    if (newCart[index].quantity > 1) {
-                      //1ta wada wedinm witrayi
-                      newCart[index].quantity -= 1; //newCart eke adala index eka aragen e index ekt adala eke quantity ek 1kin adu kala
-                    }
+                <div className="flex flex-col justify-center">
+                  <h1 className="font-semibold text-lg w-full text-wrap text-secondary leading-tight">
+                    {item.name}
+                  </h1>
 
-                    setCart(newCart); //newCart ek set kara gannva
-                  }}
-                />
-              </div>
-
-              <div className="flex flex-col items-end gap-2">
-                {item.labelledPrice > item.price && (
-                  <span
-                    className="text-secondary w-full text-right pr-[10px] line-through 
-                      text-lg opacity-60"
-                  >
-                    LKR {item.labelledPrice.toFixed(2)}
+                  {/*productID */}
+                  <span className="text-sm text-secondary opacity-60">
+                    {item.productID}
                   </span>
-                )}
-
-                <span
-                  className="text-accent font-bold w-full text-right pr-[10px]  
-                    text-xl"
-                >
-                  LKR {item.price.toFixed(2)}
-                </span>
+                </div>
               </div>
 
+              {/* RIGHT SIDE — QTY + PRICE */}
+              <div className="flex justify-between lg:justify-end items-center gap-6 mt-3 lg:mt-0">
+                <div className="flex flex-col justify-center items-center">
+                  <FaSortUp
+                    className="text-3xl cursor-pointer text-secondary hover:text-accent transition"
+                    onClick={() => {
+                      const newCart = [...cart]; //cart ekem copyyak hadala e variable ek newCart kiyala ekkt dagaththa
+
+                      newCart[index].quantity += 1; //newCart eke adala index eka aragen e index ekt adala eke quantity ek 1kin wedi kala
+                      setCart(newCart); //newCart ek set kara gannva
+                    }}
+                  />
+                  <span className="font-bold text-2xl text-secondary">
+                    {item.quantity}
+                  </span>
+                  <FaCaretDown
+                    className="text-3xl cursor-pointer text-secondary hover:text-accent transition"
+                    onClick={() => {
+                      const newCart = [...cart]; //cart ekem copyyak hadala e variable ek newCart kiyala ekkt dagaththa
+
+                      if (newCart[index].quantity > 1) {
+                        //1ta wada wedinm witrayi
+                        newCart[index].quantity -= 1; //newCart eke adala index eka aragen e index ekt adala eke quantity ek 1kin adu kala
+                      }
+
+                      setCart(newCart); //newCart ek set kara gannva
+                    }}
+                  />
+                </div>
+
+                <div className="flex flex-col items-end gap-2">
+                  {item.labelledPrice > item.price && (
+                    <span
+                      className="text-secondary w-full text-right pr-[10px] line-through 
+                      text-lg opacity-60"
+                    >
+                      LKR {item.labelledPrice.toFixed(2)}
+                    </span>
+                  )}
+
+                  <span
+                    className="text-accent font-bold w-full text-right pr-[10px]  
+                    text-xl"
+                  >
+                    LKR {item.price.toFixed(2)}
+                  </span>
+                </div>
+              </div>
             </div>
+          );
+        })}
+
+        <div className="w-full bg-white rounded-2xl shadow-lg p-6 flex flex-col gap-6">
+          {/* Name */}
+          <div className="w-full flex flex-col gap-2">
+            <label
+              htmlFor="name"
+              className="text-sm lg:text-base font-semibold text-secondary"
+            >
+              Name
+            </label>
+
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full lg:w-[550px] h-[50px] border border-secondary/40 rounded-lg px-4 text-secondary focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+              placeholder="Enter your name"
+            />
           </div>
-        );
-      })}
 
-      {/* Bottom Total Section */}
-      <div className="w-full h-[130px] bg-white rounded-xl shadow-md flex justify-between items-center px-6">
-        <button
-          to="/checkout"
-          onClick={purchaseCart}
-          className="bg-accent text-white px-6 py-3 rounded-lg shadow hover:bg-accent/90 
+          {/* Address */}
+          <div className="w-full flex flex-col gap-2">
+            <label
+              htmlFor="address"
+              className="text-sm lg:text-base font-semibold text-secondary"
+            >
+              Shipping Address
+            </label>
+
+            <textarea
+              id="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="w-full lg:w-[550px] h-[120px] border border-secondary/40 rounded-lg px-4 py-3 text-secondary focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none"
+              placeholder="Enter your shipping address"
+            />
+          </div>
+        </div>
+
+        {/* Bottom Total Section */}
+        <div className="w-full h-[130px] bg-white rounded-xl shadow-md flex justify-between items-center px-6">
+          <button
+            to="/checkout"
+            onClick={purchaseCart}
+            className="bg-accent text-white px-6 py-3 rounded-lg shadow hover:bg-accent/90 
           transition font-semibold hover:scale-[1.02] active:scale-95"
-        >
-          Order
-        </button>
+          >
+            Order
+          </button>
 
-        <div className="h-[50px] flex items-center">
-          <span className="font-bold text-accent w-full text-right text-xl lg:text-2xl mt-[5px]">
-            Total: LKR {getTotal().toFixed(2)}
-          </span>
+          <div className="h-[50px] flex items-center">
+            <span className="font-bold text-accent w-full text-right text-xl lg:text-2xl mt-[5px]">
+              Total: LKR {getTotal().toFixed(2)}
+            </span>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
-);
+  );
 }

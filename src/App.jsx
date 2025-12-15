@@ -5,24 +5,28 @@ import LoginPage from "./pages/loginPage";
 import AdminPage from "./pages/adminPage";
 import HomePage from "./pages/homePage";
 import TestPage from "./pages/test";
+import RegisterPage from "./pages/registerPage";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="w-full h-[100vh]">
-        <Toaster position="top-right" />
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+        <div className="w-full h-[100vh]">
+          <Toaster position="top-right" />
 
-        <Routes path="/">
-          {" "}
-          {/*install karagatta router-dom ekem ganne meka component ekak */}
-          {/*  me vage Route gdk dagann puluvam */}
-          <Route path="/*" element={<HomePage/>} />
-          <Route path="/register" element={<h1>Register Page </h1>} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin/*" element={<AdminPage />} />
-          <Route path="/test" element={<TestPage/>} />
-        </Routes>
-      </div>
+          <Routes path="/">
+            {" "}
+            {/*install karagatta router-dom ekem ganne meka component ekak */}
+            {/*  me vage Route gdk dagann puluvam */}
+            <Route path="/*" element={<HomePage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/admin/*" element={<AdminPage />} />
+            <Route path="/test" element={<TestPage />} />
+          </Routes>
+        </div>
+      </GoogleOAuthProvider>
     </BrowserRouter>
   );
 }

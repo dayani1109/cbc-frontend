@@ -5,13 +5,14 @@ import AboutUsPage from "./aboutUs";
 import ProductOverview from "./productOverview";
 import CartPage from "./cart";
 import CheckoutPage from "./checkout";
+import UserHomePage from "./userHomePage";
 
 export default function HomePage() {
   return (
     <div className="w-full h-full bg-primary">
       <Header />
       <Routes path="/">
-        <Route path="/" element={<h1>Welcome to the Home Page</h1>} />
+        <Route path="/" element={<UserHomePage/>} />
         <Route path="/products" element={<ProductPage/>} />
         <Route path="/contact" element={<h1>Contact Us</h1>} />
         <Route path="/about" element={<AboutUsPage/>} />

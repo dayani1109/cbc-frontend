@@ -61,7 +61,7 @@ export default function RegisterPage() {
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full h-10 px-4 mt-1 rounded-xl  bg-white border border-boardercolor text-accent placeholder-accent focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
@@ -75,7 +75,7 @@ export default function RegisterPage() {
               autoComplete="given_name" // given name danne first name ek gannakot
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full h-10 px-4 mt-1 rounded-xl  bg-white border border-boardercolor text-accent placeholder-accent focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
@@ -89,7 +89,7 @@ export default function RegisterPage() {
               autoComplete="family_name" //name auto complete venn dana ek ..family-name danne last name ek gannkot
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full h-10 px-4 mt-1 rounded-xl  bg-white border border-boardercolor text-accent placeholder-accent focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
@@ -103,7 +103,7 @@ export default function RegisterPage() {
               autoComplete="current_password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full h-10 px-4 mt-1 rounded-xl bg-white border border-boardercolor text-accent placeholder-accent focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
@@ -116,7 +116,7 @@ export default function RegisterPage() {
               placeholder="Confirm Your Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full h-10 px-4 mt-1 rounded-xl  bg-white border border-boardercolor text-accent placeholder-accent focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 

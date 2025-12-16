@@ -109,7 +109,7 @@ export default function LoginPage() {
               placeholder="e.g: you@cbc.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-accent placeholder-accent focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
@@ -121,15 +121,15 @@ export default function LoginPage() {
               placeholder="Enter Your Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full h-10 px-4 mt-1 rounded-xl bg-white/30 border border-boardercolor text-accent placeholder-accent focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
           {/* Forgot Password */}
           <div className="flex justify-end items-center text-sm text-white">
-            <a href="#" className="text-accent hover:underline">
+            <Link to="/forget-password" className="text-accent hover:underline">
               Forgot password?
-            </a>
+            </Link>
           </div>
 
           {/* Login Button */}

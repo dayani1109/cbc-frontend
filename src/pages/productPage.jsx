@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Loder } from "../components/loder";
 import ProductCard from "../components/productCard";
 import axios from "axios";
+import Footer from "../components/footer";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]); //me usestate 2 aniwa ona
@@ -35,6 +36,7 @@ export default function ProductPage() {
           })}
         </div>
       )}
+      <Footer/>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { Loder } from "../components/loder";
 import ImageSlider from "../components/imageSlider";
 import { addToCart, loadCart } from "../utils/cart";
+import Footer from "../components/footer";
 
 export default function ProductOverview() {
   const params = useParams();
@@ -143,6 +144,10 @@ export default function ProductOverview() {
           Failed to load product details
         </h1>
       )}
+
+      <Footer/>
+      
     </div>
+    
   );
 }

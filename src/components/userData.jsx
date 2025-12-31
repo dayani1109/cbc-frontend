@@ -63,7 +63,7 @@ export default function UserData() {
             <div
               className="absolute right-0 mt-2 hidden group-hover:flex 
                             flex-col bg-white text-secondary shadow-lg rounded-md 
-                            overflow-hidden w-32 z-50"
+                            overflow-hidden w-32 z-[9999]"
             >
               <a
                 className="px-4 py-2 hover:bg-primary/70 transition cursor-pointer"

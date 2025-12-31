@@ -12,6 +12,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Loder } from "../components/loder";
 import AdminUsersPage from "./admin/adminUserPage";
+import AdminDashboard from "./admin/adminDashboard";
 
 export default function AdminPage() {
   const navigate = useNavigate();
@@ -91,7 +92,7 @@ export default function AdminPage() {
         <div className=" h-full w-full max-w-full max-h-full overflow-y-scroll">
           {/** me routes tika user load vela nathnm penvann hoda na */}
 		  {userLoaded ? <Routes>
-            <Route path="/" element={<h1>Dashboard</h1>} />
+            <Route path="/" element={<AdminDashboard/>} />
             <Route path="/products" element={<AdminProductPage />} />
             <Route path="/orders" element={<AdminOrdersPage />} />
             <Route path="/add-product" element={<AddProductPage />} />

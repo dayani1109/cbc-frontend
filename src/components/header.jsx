@@ -8,8 +8,8 @@ export default function Header() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   return (
-    <header className="w-full bg-accent h-[100px] text-white px-[10px] overflow-visible">
-      <div className="w-full h-full flex  relative overflow-visible">
+    <header className="w-full bg-accent h-[100px] text-white px-[10px] overflow-visible ">
+      <div className="w-full h-full flex items-center  relative overflow-visible">
         <img
           src="logo.png"
           className="hidden lg:flex h-full absolute w-[110px] left-0 object-cover"
@@ -81,13 +81,14 @@ export default function Header() {
           </div>
         )}
 
-        <div className="hidden h-full lg:flex justify-center items-center w-full gap-[40px] text-lg">
+        <div className="hidden lg:flex h-full justify-center items-center flex-1 gap-[40px] text-lg ml-75">
           <Link to="/">Home</Link>
           <Link to="/products">Product</Link>
           <Link to="/order">Order</Link>
           <Link to="/about">About Us</Link>
           <Link to="/contact">Contact</Link>
         </div>
+
         <div className="h-full hidden lg:flex w-[200px] ml-auto mr-[100px] justify-end items-center gap-4 relative">
           <UserData />
         </div>

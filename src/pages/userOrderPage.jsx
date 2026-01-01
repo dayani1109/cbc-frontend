@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Footer from "../components/footer";
 import { Loder } from "../components/loder";
+import Header from "../components/header";
 
 export default function UserOrdersPage() {
   const [orders, setOrders] = useState([]);

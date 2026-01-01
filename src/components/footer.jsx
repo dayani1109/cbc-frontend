@@ -12,7 +12,7 @@ export default function Footer() {
   // Define navigation links
   const navLinks = [
     { name: "Shop All Products", href: "/products" },
-    { name: "Order", href: "/order" },
+    { name: "Order", href: "/orders" },
     { name: "About Us", href: "/about" },
     { name: "Contact Us", href: "/contact" },
   ];

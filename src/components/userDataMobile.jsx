@@ -114,7 +114,7 @@ export default function UserDataMobile() {
 
               <a
                 className="px-4 py-2 hover:bg-primary/70 transition cursor-pointer"
-                href="/order"
+                href="/orders"
               >
                 Orders
               </a>

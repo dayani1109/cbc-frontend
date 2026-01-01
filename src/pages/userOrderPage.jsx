@@ -5,7 +5,7 @@ import jsPDF from "jspdf";
 
 import Footer from "../components/footer";
 import { Loder } from "../components/loder";
-import Header from "../components/header";
+
 
 export default function UserOrdersPage() {
   const [orders, setOrders] = useState([]);
@@ -161,7 +161,7 @@ export default function UserOrdersPage() {
 
   return (
     <>
-      <Header />
+      
 
       <div className="min-h-screen bg-primary p-6">
         <h1 className="text-3xl font-bold text-accent mb-6 text-center">

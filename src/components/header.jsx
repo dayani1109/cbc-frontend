@@ -47,7 +47,7 @@ export default function Header() {
                 Products{" "}
               </a>
               <a
-                href="/order"
+                href="/orders"
                 className="p-4 border-b border-secondary/10 font-bold"
               >
                 {" "}
@@ -84,7 +84,7 @@ export default function Header() {
         <div className="hidden lg:flex h-full justify-center items-center flex-1 gap-[40px] text-lg ml-75">
           <Link to="/">Home</Link>
           <Link to="/products">Product</Link>
-          <Link to="/order">Order</Link>
+          <Link to="/orders">Order</Link>
           <Link to="/about">About Us</Link>
           <Link to="/contact">Contact</Link>
         </div>

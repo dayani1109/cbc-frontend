@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Loder } from "../components/loder";
 import ProductCard from "../components/productCard";
 import axios from "axios";
+
 import Footer from "../components/footer";
 
 export default function ProductPage() {
@@ -27,6 +28,32 @@ export default function ProductPage() {
 
   return (
     <div className="w-full min-h-[calc(100vh-100px)] bg-primary">
+      
+      <div className="w-full h-[100px] flex justify-center items-center ">
+        <input
+          type="text"
+          onChange={async (e) => {
+            try {
+              if (e.target.value == "") {
+                setIsLoading(true);
+              } else {
+                const searchResult = await axios.get(
+                  import.meta.env.VITE_API_URL +
+                    "/api/products/search/" +
+                    e.target.value
+                );
+                setProducts(searchResult.data); //result data tika product vidiyt set karagannva
+                setIsLoading(false);
+              }
+            } catch (error) {
+              console.error(error.response?.data || error.message);
+              toast.error("search failed");
+            }
+          }} //value change vena hema velavkm
+          placeholder="Search Products.."
+          className="px-4 py-2 rounded-lg border border-secondary/10 bg-white/80"
+        ></input>
+      </div>
       {isLoading ? (
         <Loder />
       ) : (
@@ -36,7 +63,7 @@ export default function ProductPage() {
           })}
         </div>
       )}
-      <Footer/>
+      <Footer />
     </div>
   );
 }

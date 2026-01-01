@@ -9,8 +9,8 @@ import RegisterPage from "./pages/registerPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import ForgetPassword from "./pages/forgot-password";
 import UserSettings from "./pages/settings";
-import UserOrdersPage from "./pages/userOrderPage";
-import ProductPage from "./pages/productPage";
+
+
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
             <Route path="/settings" element={<UserSettings />} />
             <Route path="/admin/*" element={<AdminPage />} />
             <Route path="/test" element={<TestPage />} />
-            <Route path="/order" element={<UserOrdersPage />} />
+
           </Routes>
         </div>
       </GoogleOAuthProvider>

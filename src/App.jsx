@@ -31,7 +31,6 @@ function App() {
             <Route path="/admin/*" element={<AdminPage />} />
             <Route path="/test" element={<TestPage />} />
             <Route path="/order" element={<UserOrdersPage />} />
-            <Route path="/products" element={<ProductPage />} />
           </Routes>
         </div>
       </GoogleOAuthProvider>

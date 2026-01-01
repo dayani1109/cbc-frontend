@@ -63,7 +63,7 @@ export default function UserData() {
               </a>
               <a
                 className="px-4 py-2 hover:bg-primary/70 transition"
-                href="/orders"
+                href="/order"
               >
                 Orders
               </a>

@@ -3,8 +3,8 @@ import toast from "react-hot-toast";
 import { Loder } from "../components/loder";
 import ProductCard from "../components/productCard";
 import axios from "axios";
+
 import Footer from "../components/footer";
-import Header from "../components/header";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]); //me usestate 2 aniwa ona
@@ -28,7 +28,7 @@ export default function ProductPage() {
 
   return (
     <div className="w-full min-h-[calc(100vh-100px)] bg-primary">
-      <Header />
+      
       <div className="w-full h-[100px] flex justify-center items-center ">
         <input
           type="text"

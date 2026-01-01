@@ -4,7 +4,7 @@ import { Loder } from "../components/loder";
 import ProductCard from "../components/productCard";
 import axios from "axios";
 
-import Footer from "../components/footer";
+import Footer from "../components/footer.jsx";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]); //me usestate 2 aniwa ona
